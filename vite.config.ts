@@ -10,7 +10,6 @@ import inspect from 'vite-plugin-inspect';
 import { vitePluginRemoteModuleLoader } from './tools/vite/plugins/vitePluginRemoteModuleLoader';
 import { vitePluginRemoteAssetLoader } from './tools/vite/plugins/vitePluginRemoteAssetLoader';
 import { vitePluginFileDirPathConstants } from './tools/vite/plugins/vitePluginFileDirPathConstants';
-import { vitePluginThrelteSsrStub } from './tools/vite/plugins/vitePluginThrelteSsrStub';
 
 const production = process.env['NODE_ENV'] === 'production';
 
@@ -38,7 +37,6 @@ export default {
 			browser: true,
 			dedupe: ['svelte'],
 		}),
-		vitePluginThrelteSsrStub(),
 		sveltekit(),
 		mkcert(),
 		inspect({
