@@ -1,0 +1,7 @@
+{
+	"name": "Deceitville: A Wizardly UI World",
+	"short_name": "Deceitville",
+	"theme_color": "#000000",
+	"background_color": "#0c0c0d",
+	"display": "standalone"
+}
