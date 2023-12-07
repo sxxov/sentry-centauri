@@ -106,7 +106,16 @@
 	}
 	$: if (outDiv)
 		if (fullscreen) {
-			if (!document.fullscreenElement) void outDiv.requestFullscreen();
+			void (async () => {
+				try {
+					if (!document.fullscreenElement)
+						await outDiv.requestFullscreen();
+				} catch {}
+
+				try {
+					await navigator.wakeLock.request('screen');
+				} catch {}
+			})();
 		} else if (document.fullscreenElement) {
 			void document.exitFullscreen();
 		}
@@ -117,6 +126,14 @@
 	description="Shine light onto people you dislike."
 	keywords={['amongus']}
 	src=""
+/>
+<svelte:window
+	on:visibilitychange={async () => {
+		if (document.visibilityState === 'visible')
+			try {
+				await navigator.wakeLock.request('screen');
+			} catch {}
+	}}
 />
 <svelte:document
 	on:fullscreenchange={() => {
